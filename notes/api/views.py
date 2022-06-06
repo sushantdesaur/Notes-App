@@ -1,14 +1,13 @@
-from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import NoteSerializer
 from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
 
-from .models import Note
-
 # Create your views here.
+
+
 @api_view(['GET'])
 def getRoutes(request):
+
     routes = [
         {
             'Endpoint': '/notes/',
@@ -20,25 +19,25 @@ def getRoutes(request):
             'Endpoint': '/notes/id',
             'method': 'GET',
             'body': None,
-            'description': 'Returns a single note object'   
+            'description': 'Returns a single note object'
         },
         {
             'Endpoint': '/notes/create/',
             'method': 'POST',
             'body': {'body': ""},
-            'description': 'Create new note with data sent in post request'
+            'description': 'Creates new note with data sent in post request'
         },
         {
             'Endpoint': '/notes/id/update/',
             'method': 'PUT',
             'body': {'body': ""},
-            'description': 'Creates an existing note with data sent in post request'  
+            'description': 'Creates an existing note with data sent in post request'
         },
         {
             'Endpoint': '/notes/id/delete/',
             'method': 'DELETE',
             'body': None,
-            'description': 'Deletes existing notes'  
+            'description': 'Deletes and exiting note'
         },
     ]
     return Response(routes)
